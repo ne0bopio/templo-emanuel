@@ -1,26 +1,73 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ── 3 palettes (Juan's client rule) — switch via data-palette on <html> ── */
+
+/* 1. Cálido — ivory / espresso / amber (default) */
+:root,
+[data-palette="calido"] {
+  --bg: #faf6ef;
+  --surface: #f1eadd;
+  --ink: #271f16;
+  --muted: #62543f;
+  --accent: #a34a00;
+  --accent-deep: #6f3200;
+  --accent-soft: #ecdcc4;
+  --capsule: #201812;
+  --on-accent: #ffffff;
+}
+
+/* 2. Cielo — soft white / deep navy / royal blue */
+[data-palette="cielo"] {
+  --bg: #f7f9fc;
+  --surface: #eaeff7;
+  --ink: #16223a;
+  --muted: #4a5772;
+  --accent: #1d4fa8;
+  --accent-deep: #12356e;
+  --accent-soft: #d7e2f4;
+  --capsule: #101b33;
+  --on-accent: #ffffff;
+}
+
+/* 3. Oliva — warm sand / olive / terracotta */
+[data-palette="oliva"] {
+  --bg: #f7f4ea;
+  --surface: #ece7d6;
+  --ink: #242a1a;
+  --muted: #59614a;
+  --accent: #a04520;
+  --accent-deep: #6e2d12;
+  --accent-soft: #e5dcc2;
+  --capsule: #1d2315;
+  --on-accent: #ffffff;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-deep: var(--accent-deep);
+  --color-accent-soft: var(--accent-soft);
+  --color-capsule: var(--capsule);
+  --color-on-accent: var(--on-accent);
+  --font-display: var(--font-fraunces);
+  --font-body: var(--font-albert);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
 }
