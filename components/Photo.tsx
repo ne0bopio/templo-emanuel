@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import Image from "next/image";
+import { BASE_PATH } from "@/lib/site";
 
 // Drop real photos into public/photos/ with the expected filename and they
 // replace the placeholder automatically. No code changes needed.
@@ -33,14 +33,16 @@ export function Photo({
     );
   }
 
+  // Plain <img> (images are exported unoptimized): next/image doesn't prepend
+  // basePath for raw string srcs, so we prefix it here via the shared constant.
   return (
     <div className={`relative overflow-hidden ${className}`}>
-      <Image
-        src={`/photos/${name}`}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={`${BASE_PATH}/photos/${name}`}
         alt={alt}
-        fill
-        className="object-cover"
-        sizes="(max-width: 768px) 100vw, 50vw"
+        loading="lazy"
+        className="absolute inset-0 w-full h-full object-cover"
       />
     </div>
   );
