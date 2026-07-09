@@ -200,6 +200,38 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ── NUESTRA COMUNIDAD (galería) ── */}
+        <section id="comunidad">
+          <div className="max-w-5xl mx-auto px-6 py-20 sm:py-28">
+            <Reveal>
+              <h2 className="font-display font-semibold text-3xl sm:text-5xl text-ink tracking-tight">
+                Nuestra comunidad
+              </h2>
+              <p className="mt-4 text-muted text-lg max-w-2xl">
+                Familias de muchos países, una sola fe. Así se ve un domingo en
+                Templo Emanuel.
+              </p>
+            </Reveal>
+            <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+              {[
+                { name: "comunidad-1.jpg", alt: "Hermanos de la iglesia compartiendo" },
+                { name: "comunidad-2.jpg", alt: "Madre e hijo en la iglesia" },
+                { name: "comunidad-3.jpg", alt: "Hermanas celebrando su herencia" },
+                { name: "comunidad-4.jpg", alt: "Momento de oración con la Biblia" },
+              ].map((p, i) => (
+                <Reveal key={p.name} delay={i * 0.08}>
+                  <Photo
+                    name={p.name}
+                    alt={p.alt}
+                    label={`foto · ${p.name}`}
+                    className="rounded-2xl aspect-[4/5] w-full"
+                  />
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ── UBICACIÓN ── */}
         <section id="ubicacion">
           <div className="max-w-5xl mx-auto px-6 py-20 sm:py-28">
