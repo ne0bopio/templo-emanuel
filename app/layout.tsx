@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      data-palette="calido"
+      data-palette="cielo"
       className={`${fraunces.variable} ${albert.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
